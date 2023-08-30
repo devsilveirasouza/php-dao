@@ -21,9 +21,20 @@ require_once("config.php");
 // echo json_encode($search);
 
 // Carrega um usuário usando o login e a sua senha
-$usuario = new Usuario();
-$usuario->login("joao","12345678");
+// $usuario = new Usuario();
+// $usuario->login("joao","12345678");
+// echo $usuario;
 
-echo $usuario;
+// Método insert
+// $aluno = new Usuario();
+// $aluno->setDeslogin("aluno5");
+// $aluno->setDessenha("#lun*");
+// $aluno->insert();
+// echo $aluno;
+
+// Método insert usando o constructor
+$aluno = new Usuario("aluno12","al!un9");
+$aluno->insert();
+echo $aluno;
 
 ?>
