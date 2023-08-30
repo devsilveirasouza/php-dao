@@ -107,7 +107,7 @@ class Usuario
         $this->setDtcadastro(new DateTime($data['dtcadastro']));
     }
 
-    // Inserir dados no banco
+    // Método Insert, para gravar dados no banco
     public function insert()
     {
         $sql = new Sql();
@@ -127,6 +127,21 @@ class Usuario
         $this->setDessenha($password);
     }
 
+    // Método Update, atualiza dados no registro existente
+    public function update($login, $password){
+
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+
+        $sql = new Sql();
+
+        $sql->execQuery("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDessenha(),
+            ':ID'=>$this->getIdusuario(),
+        ));
+    }
+
     public function __toString()
     {
         return json_encode(array(
@@ -136,5 +151,6 @@ class Usuario
             "dtcadastro" => $this->getDtcadastro()->format("d/m/Y H:i:s"),
 
         ));
+
     }
 }

@@ -33,8 +33,15 @@ require_once("config.php");
 // echo $aluno;
 
 // Método insert usando o constructor
-$aluno = new Usuario("aluno12","al!un9");
-$aluno->insert();
-echo $aluno;
+// $aluno = new Usuario("aluno12","al!un9");
+// $aluno->insert();
+// echo $aluno;
+
+// Atualizar o usuário
+$usuario = new Usuario();
+$usuario->loadById(8);
+$usuario->update("professor", "!b40j%lfb*ng%");
+
+echo $usuario;
 
 ?>
