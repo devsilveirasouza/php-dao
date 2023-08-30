@@ -10,16 +10,16 @@ class Sql extends PDO
         $this->conn = new PDO("mysql:host=localhost;dbname=phpDao", "usertest", "123456");
     }
 
-    private function setParams($statments, $parameters = array())
+    private function setParams($statement, $parameters = array())
     {
         foreach ($parameters as $key => $value) {
-            $this->setParam($statments, $key, $value);
+            $this->setParam($statement, $key, $value);
         }
     }
 
-    private function setParam($statment, $key, $value)
+    private function setParam($statement, $key, $value)
     {
-        $statment->bindParam(":{$key}", $value);
+        $statement->bindParam($key, $value);
     }
 
     public function execQuery($rawQuery, $params = array())
